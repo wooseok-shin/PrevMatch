@@ -1,0 +1,31 @@
+# arguments for dataset
+dataset: ade20k
+nclass: 150
+crop_size: 513
+data_root: ../data/ade20k
+
+# arguments for training
+epochs: 40
+batch_size: 4 # per GPU x 2 GPUs
+lr: 0.004
+lr_multi: 10.0
+criterion:
+  name: CELoss
+  kwargs:
+    ignore_index: 255
+conf_thresh: 0.95
+amp: True
+
+# arguments for prevmatch
+prev:
+  list_max_len: 5
+  model_num: 3
+  random_select: True
+  conf_thresh: 0.9
+  base_only_epoch: 5
+
+# arguments for model
+model: deeplabv3plus
+backbone: resnet50
+replace_stride_with_dilation: [False, False, True]
+dilations: [6, 12, 18]

@@ -1,0 +1,29 @@
+# arguments for dataset
+dataset: coco
+nclass: 81
+crop_size: 513
+data_root: ../data/coco
+
+# arguments for training
+epochs: 30
+batch_size: 4 # per GPU x 2 GPUs
+lr: 0.004
+lr_multi: 10.0
+criterion:
+  name: CELoss
+  kwargs:
+    ignore_index: 255
+conf_thresh: 0.95
+amp: True
+
+# arguments for prevmatch
+prev:
+  list_max_len: 5
+  model_num: 3
+  random_select: True
+  conf_thresh: 0.9
+  base_only_epoch: 5
+
+# arguments for model
+backbone: xception
+dilations: [6, 12, 18]
