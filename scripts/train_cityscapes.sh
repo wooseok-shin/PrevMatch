@@ -1,7 +1,7 @@
 #!/bin/bash
 now=$(date +"%Y%m%d_%H%M%S")
 
-# modify these arguments if you want to try other datasets, splits or methods
+# modify these arguments if you want to try other datasets or methods
 # dataset: ['pascal', 'cityscapes', 'coco', 'ade20k']
 # method: ['prevmatch', 'supervised']
 # exp: just for specifying the 'save_path'
