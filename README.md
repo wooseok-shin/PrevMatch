@@ -3,13 +3,17 @@
 
 This is the official PyTorch implementation for the paper "Revisiting and Maximizing Temporal Knowledge in Semi-supervised Semantic Segmentation".
 
-**[Arxiv]**
+**[[Arxiv]](https://arxiv.org/abs/2405.20610)**
 
 
 ## Overview
-description
+In semi-supervised semantic segmentation, the Mean Teacher- and co-training-based approaches are employed to mitigate confirmation bias and coupling problems. 
+However, despite their high performance, these approaches frequently involve complex training pipelines and a substantial computational burden, limiting the scalability and compatibility of these methods.
+In this paper, we propose a PrevMatch framework that effectively mitigates the aforementioned limitations by maximizing the utilization of the temporal knowledge obtained during the training process.
+We directly utilize previous models to provide additional pseudo-label guidance, referred to as previous guidance, to the student network. 
+In addition, we develop a highly randomized ensemble strategy that enhances the reliability and diversity of the previous guidance while minimizing the increase in computational complexity.
 
-<img src="./images/framework.png" width=50% height=50% class="center">
+<img src="./images/framework.jpg" width=50% height=50% class="center">
 
 
 
@@ -17,6 +21,7 @@ description
 
 ### Pascal VOC 2012
 **Original protocol** whereby labeled images are exclusively sourced from the high-quality subset.
+
 The ( ) indicates the performance of the provided checkpoints.
 
 | ResNet-50 & DeepLabV3+      |  92  | 183  | 366  | 732  | 1464 |
@@ -68,17 +73,18 @@ pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 --extra-index-url http
 ### Pretrained Weights of Backbone
 Please download the weights file and put them under `pretrained` folder.
 
-ResNet-50 | ResNet-101
+[ResNet-50](https://github.com/wooseok-shin/PrevMatch/releases/download/preliminary/resnet50.pth) | [ResNet-101](https://github.com/wooseok-shin/PrevMatch/releases/download/preliminary/resnet101.pth) | [Xception-65](https://github.com/wooseok-shin/PrevMatch/releases/download/preliminary/xception.pth)
 
 
 ### Setup Datasets
 
 Please download the datasets and extract them to `./data/`.
 
-- Pascal: [JPEGImages](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar) | [SegmentationClass]
-- Cityscapes: [leftImg8bit](https://www.cityscapes-dataset.com/file-handling/?packageID=3) | [gtFine]
+- Pascal: [JPEGImages](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar) | [SegmentationClass](https://github.com/wooseok-shin/PrevMatch/releases/download/preliminary/ground_truth_pascal.zip)
+- Cityscapes: [leftImg8bit](https://www.cityscapes-dataset.com/file-handling/?packageID=3) | [gtFine](https://github.com/wooseok-shin/PrevMatch/releases/download/preliminary/ground_truth_cityscapes.zip)
+- COCO: [train2017](http://images.cocodataset.org/zips/train2017.zip) | [val2017](http://images.cocodataset.org/zips/val2017.zip) | [masks](https://github.com/wooseok-shin/PrevMatch/releases/download/preliminary/ground_truth_coco.zip)
 
-The ground truth of Pascal VOC and Cityscapes were preprocessed by [UniMatch](링크)
+The ground truth of Pascal VOC and Cityscapes were preprocessed by [UniMatch](https://github.com/LiheYoung/UniMatch)
 
 The final folder structure should look like this:
 ```
@@ -94,6 +100,10 @@ The final folder structure should look like this:
 	├── cityscapes
 		├── leftImg8bit
 		└── gtFine
+	├── coco
+		├── train2017
+		├── val2017
+		└── masks
 ```
 
 
@@ -119,8 +129,12 @@ sh scripts/train_<dataset>.sh <num_gpu> <port> <splits>
 ### Evaluation
 ```bash
 # sh cripts/evaluate.sh <dataset> <checkpoint path>
-sh scripts/evaluate.sh pascal trained_weights/pascal_92_73.68.pth
+sh scripts/evaluate.sh pascal trained_weights/pascal_92.pth
 ```
+
+
+## Todo List
+- [ ] Upload checkpoints and training logs
 
 
 ## Acknowledgements

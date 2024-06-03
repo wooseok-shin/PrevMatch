@@ -12,9 +12,9 @@ from torch.optim import SGD
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 
+from evaluate import evaluate
 from dataset.semi import SemiDataset
 from model.semseg.deeplabv3plus import DeepLabV3Plus
-from supervised import evaluate
 from util.classes import CLASSES
 from util.ohem import ProbOhemCrossEntropy2d
 from util.utils import count_params, init_log

@@ -4,12 +4,25 @@ import numpy as np
 from tqdm import tqdm
 
 import torch
+import torch.distributed as dist
 from torch.utils.data import DataLoader
 
 from dataset.semi import SemiDataset
 from model.semseg.deeplabv3plus import DeepLabV3Plus
 from util.classes import CLASSES
 from util.utils import count_params, AverageMeter, intersectionAndUnion
+
+def remove_module_prefix(state_dict):
+    """Remove 'module.' prefix from saved weights in multi-GPU training"""
+    new_state_dict = {}
+    for k, v in state_dict.items():
+        if k.startswith('module.'):
+            new_key = k[len('module.'):]
+        else:
+            new_key = k
+        new_state_dict[new_key] = v
+
+    return new_state_dict
 
 def evaluate(model, loader, mode, cfg, ddp=False):
     model.eval()
@@ -80,8 +93,10 @@ def main():
     cfg = yaml.load(open(args.config, "r"), Loader=yaml.Loader)
     
     model = DeepLabV3Plus(cfg)
-    model.load_state_dict(torch.load(args.ckpt_path)['model'])
-    model.cuda()   
+    ckpt = torch.load(args.ckpt_path)['model']
+    ckpt = remove_module_prefix(ckpt) if cfg['dataset'] != 'pascal' else ckpt
+    model.load_state_dict(ckpt)
+    model.cuda()
     print('Total params: {:.1f}M\n'.format(count_params(model)))
 
     valset = SemiDataset(cfg['dataset'], cfg['data_root'], 'val')
