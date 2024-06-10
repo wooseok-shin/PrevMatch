@@ -35,21 +35,21 @@ In addition, we develop a highly randomized ensemble strategy that enhances the 
 ### Pascal VOC 2012
 **Original protocol** whereby labeled images are exclusively sourced from the high-quality subset.
 
-The ( ) indicates the performance of the provided checkpoints.
+The ( ) indicates the performance of the reproduced checkpoints.
 
 | ResNet-50 & DeepLabV3+      |  92  | 183  | 366  | 732  | 1464 |
 | :-------------------------: | :--: | :--: | :--: | :--: | :--: |
 | Supervised Baseline         | 44.0 | 52.3 | 61.7 | 66.7 | 72.9 |
 | UniMatch     (CVPR'23)      | 71.9 | 72.5 | 76.0 | 77.4 | 78.7 |
 | Dual Teacher (NIPS'23)      | 70.8 | 74.5 | 76.4 | 77.7 | 78.2 |
-| **PrevMatch (ours)**        | 73.4 <br> (73.7) | 75.4 <br> (75.9) | 77.5 <br> (78.0) | 78.6 | 79.3 <br> (79.6)|
+| **PrevMatch (ours)**        | 73.4 <br> [(73.7)](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/pascal_r50_92_73.7.pth) | 75.4 <br> [(75.9)](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/pascal_r50_183_75.9.pth) | 77.5 <br> [(78.0)](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/pascal_r50_366_78.0.pth) | [78.6](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/pascal_r50_732_78.6.pth) | 79.3 <br> [(79.6)](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/pascal_r50_1464_79.6.pth)|
 
 | ResNet-101 & DeepLabV3+     |  92  | 183  | 366  | 732  | 1464 |
 | :-------------------------: | :--: | :--: | :--: | :--: | :--: |
 | Supervised Baseline         | 45.1 | 55.3 | 64.8 | 69.7 | 73.5 |
 | AugSeg     (CVPR'23)        | 71.1 | 75.5 | 78.8 | 80.3 | 81.4 |
 | UniMatch   (CVPR'23)        | 75.2 | 77.2 | 78.8 | 79.9 | 81.2 |
-| **PrevMatch (ours)**        | 77.0 <br> (76.9) | 78.5 <br> (79.0) | 79.6 <br> (79.8) | 80.4 | 81.6 |
+| **PrevMatch (ours)**        | 77.0 <br> [(76.9)](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/pascal_r101_92_76.9.pth) | 78.5 <br> [(79.0)](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/pascal_r101_183_79.0.pth) | 79.6 <br> [(79.8)](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/pascal_r101_366_79.8.pth) | [80.4](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/pascal_r101_732_80.4.pth) | [81.6](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/pascal_r101_1464_81.6.pth) |
 
 
 ### Cityscapes
@@ -58,16 +58,16 @@ The ( ) indicates the performance of the provided checkpoints.
 | Supervised Baseline            | 63.3 | 70.2 | 73.1 | 76.6 |
 | UniMatch      (CVPR'23)        | 75.0 | 76.8 | 77.5 | 78.6 |
 | Diverse Co-T. (3-cps) (ICCV'23)|  -   | 76.5 | 78.5 |  -   |
-| **PrevMatch (ours)**           | 75.8 <br> (76.0) | 77.8 | 78.8 <br> (78.7) | 79.2 |
+| **PrevMatch (ours)**           | 75.8 <br> [(76.0)](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/cityscapes_r50_1_16_76.0.pth) | [77.8](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/cityscapes_r50_1_8_77.8.pth) | 78.8 <br> [(78.7)](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/cityscapes_r50_1_4_78.7.pth) | [79.2](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/cityscapes_r50_1_2_79.2.pth) |
 
 | ResNet-101 & DeepLabV3+        | 1/16 | 1/8  | 1/4  | 1/2  |
 | :----------------------------: | :--: | :--: | :--: | :--: |
 | Supervised Baseline            | 66.3 | 72.8 | 75.0 | 78.0 |
 | UniMatch      (CVPR'23)        | 76.6 | 77.9 | 79.2 | 79.5 |
 | Diverse Co-T. (3-cps) (ICCV'23)| 75.7 | 77.4 | 78.5 |  -   |
-| **PrevMatch (ours)**           | 77.7 <br> (77.6) | 78.9 | 80.1 | 80.1 |
+| **PrevMatch (ours)**           | 77.7 <br> [(77.6)](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/cityscapes_r101_1_16_77.6.pth) | [78.9](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/cityscapes_r101_1_8_78.9.pth) | [80.1](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/cityscapes_r101_1_4_80.1.pth) | [80.1](https://github.com/wooseok-shin/PrevMatch/releases/download/checkpoints/cityscapes_r101_1_2_80.1.pth) |
 
-We also provide training logs.
+We also provide [training logs](https://github.com/wooseok-shin/PrevMatch/tree/main/training_logs).
 
 
 
@@ -142,12 +142,20 @@ sh scripts/train_<dataset>.sh <num_gpu> <port> <splits>
 ### Evaluation
 ```bash
 # sh cripts/evaluate.sh <dataset> <checkpoint path>
-sh scripts/evaluate.sh pascal trained_weights/pascal_92.pth
+sh scripts/evaluate.sh pascal trained_weights/pascal_92_73.7.pth
 ```
 
 
-## Todo List
-- [ ] Upload checkpoints and training logs
+## Citation
+If you find this project useful, please consider citing:
+```bibtex
+@article{shin2024revisiting,
+  title={Revisiting and Maximizing Temporal Knowledge in Semi-supervised Semantic Segmentation},
+  author={Shin, Wooseok and Park, Hyun Joon and Kim, Jin Sob and Han, Sung Won},
+  journal={arXiv preprint arXiv:2405.20610},
+  year={2024}
+}
+```
 
 
 ## Acknowledgements
