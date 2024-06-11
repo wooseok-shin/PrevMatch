@@ -97,7 +97,7 @@ Please download the datasets and extract them to `./data/`.
 - Cityscapes: [leftImg8bit](https://www.cityscapes-dataset.com/file-handling/?packageID=3) | [gtFine](https://github.com/wooseok-shin/PrevMatch/releases/download/preliminary/ground_truth_cityscapes.zip)
 - COCO: [train2017](http://images.cocodataset.org/zips/train2017.zip) | [val2017](http://images.cocodataset.org/zips/val2017.zip) | [masks](https://github.com/wooseok-shin/PrevMatch/releases/download/preliminary/ground_truth_coco.zip)
 
-The ground truth of Pascal VOC and Cityscapes were preprocessed by [UniMatch](https://github.com/LiheYoung/UniMatch)
+The ground truths were preprocessed by [UniMatch](https://github.com/LiheYoung/UniMatch)
 
 The final folder structure should look like this:
 ```
