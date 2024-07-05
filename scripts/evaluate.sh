@@ -5,5 +5,6 @@
 dataset=$1
 config=configs/${dataset}.yaml
 ckpt_path=$2
+save_map=$3
 
-python evaluate.py --config $config --ckpt-path $ckpt_path
+python evaluate.py --config $config --ckpt-path $ckpt_path --save-map $save_map

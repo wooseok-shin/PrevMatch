@@ -1,6 +1,8 @@
+import os
 import yaml
 import argparse
 import numpy as np
+from PIL import Image
 from tqdm import tqdm
 
 import torch
@@ -10,7 +12,7 @@ from torch.utils.data import DataLoader
 from dataset.semi import SemiDataset
 from model.semseg.deeplabv3plus import DeepLabV3Plus
 from util.classes import CLASSES
-from util.utils import count_params, AverageMeter, intersectionAndUnion
+from util.utils import count_params, AverageMeter, intersectionAndUnion, color_map
 
 def remove_module_prefix(state_dict):
     """Remove 'module.' prefix from saved weights in multi-GPU training"""
@@ -24,15 +26,21 @@ def remove_module_prefix(state_dict):
 
     return new_state_dict
 
-def evaluate(model, loader, mode, cfg, ddp=False):
+def evaluate(model, loader, mode, cfg, save_path, ddp=False):
     model.eval()
     assert mode in ['original', 'center_crop', 'sliding_window']
     intersection_meter = AverageMeter()
     union_meter = AverageMeter()
+    palette = color_map(cfg['dataset'])
+    
+    if cfg['save_map']:
+        save_path = save_path.split('.pth')[0]    # checkpoints/pascal_92_73.7.pth -> checkpoints/pascal_92_73.7
+        os.makedirs(os.path.join(save_path, 'mask'), exist_ok=True)           # for mask
+        os.makedirs(os.path.join(save_path, 'color_mask'), exist_ok=True)   # for colorized mask
 
     with torch.no_grad():
         for img, mask, id in tqdm(loader):
-            
+
             img = img.cuda()
 
             if mode == 'sliding_window':
@@ -58,6 +66,19 @@ def evaluate(model, loader, mode, cfg, ddp=False):
                     mask = mask[:, start_h:start_h + cfg['crop_size'], start_w:start_w + cfg['crop_size']]
 
                 pred = model(img).argmax(dim=1)
+
+            # Save prediction mask
+            if cfg['save_map']:
+                img_path, mask_path = id[0].split(' ')
+                mask_name = os.path.basename(mask_path)
+                
+                pred_map = pred[0].cpu().numpy().astype(np.uint8)
+                pred_map = Image.fromarray(pred_map)
+                pred_colormap = pred_map.convert('P')
+                pred_colormap.putpalette(palette)
+                
+                pred_map.save(os.path.join(save_path, 'mask', mask_name))
+                pred_colormap.save(os.path.join(save_path, 'color_mask', mask_name))
 
             intersection, union, target = \
                 intersectionAndUnion(pred.cpu().numpy(), mask.numpy(), cfg['nclass'], 255)
@@ -87,10 +108,12 @@ def main():
     parser = argparse.ArgumentParser(description='Semi-Supervised Semantic Segmentation')
     parser.add_argument('--config', type=str, required=True)
     parser.add_argument('--ckpt-path', type=str, required=True)
+    parser.add_argument('--save-map', type=str, default=False)
 
     args = parser.parse_args()
 
     cfg = yaml.load(open(args.config, "r"), Loader=yaml.Loader)
+    cfg['save_map'] = args.save_map
     
     model = DeepLabV3Plus(cfg)
     ckpt = torch.load(args.ckpt_path)['model']
@@ -103,7 +126,7 @@ def main():
     valloader = DataLoader(valset, batch_size=1, pin_memory=True, num_workers=1, drop_last=False)
     
     eval_mode = 'sliding_window' if cfg['dataset'] == 'cityscapes' else 'original'
-    mIoU, iou_class = evaluate(model, valloader, eval_mode, cfg)
+    mIoU, iou_class = evaluate(model, valloader, eval_mode, cfg, save_path=args.ckpt_path)
 
     for (cls_idx, iou) in enumerate(iou_class):
         print('***** Evaluation ***** >>>> Class [{:} {:}] '
