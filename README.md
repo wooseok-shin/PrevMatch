@@ -145,6 +145,11 @@ sh scripts/train_<dataset>.sh <num_gpu> <port> <splits>
 sh scripts/evaluate.sh pascal trained_weights/pascal_92_73.7.pth True
 ```
 
+### Inference on Custom Dataset
+```bash
+# sh cripts/inference.sh <custom dataset path> <dataset type> <checkpoint path> <save_map=True/False> <img_size>
+sh scripts/inference.sh ../data/your_img_path/ pascal checkpoints/pascal_r50_92_73.7.pth True 500
+```
 
 ## Citation
 If you find this project useful, please consider citing:
