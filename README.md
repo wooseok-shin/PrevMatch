@@ -142,7 +142,7 @@ sh scripts/train_<dataset>.sh <num_gpu> <port> <splits>
 ### Evaluation
 ```bash
 # sh cripts/evaluate.sh <dataset> <checkpoint path> <save_map=True/False>
-sh scripts/evaluate.sh pascal trained_weights/pascal_92_73.7.pth True
+sh scripts/evaluate.sh pascal checkpoints/pascal_92_73.7.pth True
 ```
 
 ### Inference on Custom Dataset
