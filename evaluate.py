@@ -39,7 +39,7 @@ def evaluate(model, loader, mode, cfg, save_path, ddp=False):
         os.makedirs(os.path.join(save_path, 'color_mask'), exist_ok=True)   # for colorized mask
 
     with torch.no_grad():
-        for img, mask, id in tqdm(loader):
+        for img, mask, id in loader:
 
             img = img.cuda()
 

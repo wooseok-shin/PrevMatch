@@ -27,3 +27,6 @@ prev:
 # arguments for model
 backbone: xception
 dilations: [6, 12, 18]
+
+# arguments for testing
+save_map: False
