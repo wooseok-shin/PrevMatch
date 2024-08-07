@@ -287,7 +287,7 @@ def main():
                 log_avg.reset()
 
         eval_mode = 'sliding_window' if cfg['dataset'] == 'cityscapes' else 'original'
-        mIoU, iou_class = evaluate(model, valloader, eval_mode, cfg, ddp)
+        mIoU, iou_class = evaluate(model, valloader, eval_mode, cfg, args.save_path, ddp)
 
         if rank == 0:
             for (cls_idx, iou) in enumerate(iou_class):

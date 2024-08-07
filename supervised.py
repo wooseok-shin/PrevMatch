@@ -38,6 +38,7 @@ def main():
     logger.propagate = 0
 
     rank, world_size = setup_distributed(port=args.port)
+    ddp = True if world_size > 1 else False
 
     if rank == 0:
         all_args = {**cfg, **vars(args), 'ngpus': world_size}
@@ -135,7 +136,7 @@ def main():
                 logger.info('Iters: {:}, Total loss: {:.3f}'.format(i, total_loss.avg))
 
         eval_mode = 'sliding_window' if cfg['dataset'] == 'cityscapes' else 'original'
-        mIoU, iou_class = evaluate(model, valloader, eval_mode, cfg)
+        mIoU, iou_class = evaluate(model, valloader, eval_mode, cfg, args.save_path, ddp)
 
         if rank == 0:
             for (cls_idx, iou) in enumerate(iou_class):
