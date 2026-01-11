@@ -2,7 +2,7 @@
 
 This is the official PyTorch implementation for the paper "[PrevMatch](https://arxiv.org/abs/2405.20610): Revisiting and Maximizing Temporal Knowledge in Semi-supervised Semantic Segmentation".
 
-:bell: We are pleased to announce that PrevMatch was accepted at **WACV26**. :bell:
+:bell: We are pleased to announce that PrevMatch was accepted at **WACV'26**. :bell:
 
 ## Overview
 In semi-supervised semantic segmentation, the Mean Teacher- and co-training-based approaches are employed to mitigate confirmation bias and coupling problems. 
