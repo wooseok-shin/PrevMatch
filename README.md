@@ -1,23 +1,8 @@
 # PrevMatch: Revisiting and Maximizing Temporal Knowledge in Semi-supervised Semantic Segmentation
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/revisiting-and-maximizing-temporal-knowledge/semi-supervised-semantic-segmentation-on-22)](https://paperswithcode.com/sota/semi-supervised-semantic-segmentation-on-22?p=revisiting-and-maximizing-temporal-knowledge)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/revisiting-and-maximizing-temporal-knowledge/semi-supervised-semantic-segmentation-on-2)](https://paperswithcode.com/sota/semi-supervised-semantic-segmentation-on-2?p=revisiting-and-maximizing-temporal-knowledge)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/revisiting-and-maximizing-temporal-knowledge/semi-supervised-semantic-segmentation-on-1)](https://paperswithcode.com/sota/semi-supervised-semantic-segmentation-on-1?p=revisiting-and-maximizing-temporal-knowledge)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/revisiting-and-maximizing-temporal-knowledge/semi-supervised-semantic-segmentation-on-21)](https://paperswithcode.com/sota/semi-supervised-semantic-segmentation-on-21?p=revisiting-and-maximizing-temporal-knowledge)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/revisiting-and-maximizing-temporal-knowledge/semi-supervised-semantic-segmentation-on-4)](https://paperswithcode.com/sota/semi-supervised-semantic-segmentation-on-4?p=revisiting-and-maximizing-temporal-knowledge)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/revisiting-and-maximizing-temporal-knowledge/semi-supervised-semantic-segmentation-on-9)](https://paperswithcode.com/sota/semi-supervised-semantic-segmentation-on-9?p=revisiting-and-maximizing-temporal-knowledge)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/revisiting-and-maximizing-temporal-knowledge/semi-supervised-semantic-segmentation-on-27)](https://paperswithcode.com/sota/semi-supervised-semantic-segmentation-on-27?p=revisiting-and-maximizing-temporal-knowledge)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/revisiting-and-maximizing-temporal-knowledge/semi-supervised-semantic-segmentation-on-28)](https://paperswithcode.com/sota/semi-supervised-semantic-segmentation-on-28?p=revisiting-and-maximizing-temporal-knowledge)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/revisiting-and-maximizing-temporal-knowledge/semi-supervised-semantic-segmentation-on-29)](https://paperswithcode.com/sota/semi-supervised-semantic-segmentation-on-29?p=revisiting-and-maximizing-temporal-knowledge)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/revisiting-and-maximizing-temporal-knowledge/semi-supervised-semantic-segmentation-on-30)](https://paperswithcode.com/sota/semi-supervised-semantic-segmentation-on-30?p=revisiting-and-maximizing-temporal-knowledge)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/revisiting-and-maximizing-temporal-knowledge/semi-supervised-semantic-segmentation-on-10)](https://paperswithcode.com/sota/semi-supervised-semantic-segmentation-on-10?p=revisiting-and-maximizing-temporal-knowledge)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/revisiting-and-maximizing-temporal-knowledge/semi-supervised-semantic-segmentation-on-coco-2)](https://paperswithcode.com/sota/semi-supervised-semantic-segmentation-on-coco-2?p=revisiting-and-maximizing-temporal-knowledge)
+This is the official PyTorch implementation for the paper "[PrevMatch](https://arxiv.org/abs/2405.20610): Revisiting and Maximizing Temporal Knowledge in Semi-supervised Semantic Segmentation".
 
-
-This is the official PyTorch implementation for the paper "Revisiting and Maximizing Temporal Knowledge in Semi-supervised Semantic Segmentation".
-
-**[[Arxiv]](https://arxiv.org/abs/2405.20610)**
-
+:bell: We are pleased to announce that PrevMatch was accepted at **WACV26**. :bell:
 
 ## Overview
 In semi-supervised semantic segmentation, the Mean Teacher- and co-training-based approaches are employed to mitigate confirmation bias and coupling problems. 
